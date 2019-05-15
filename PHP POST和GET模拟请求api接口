@@ -1,0 +1,42 @@
+1.POST请求
+  
+  //初始化
+  $url='www.baidu.com';
+  $post_data = array(
+      "param1" => "1",
+      "param2" => "2"
+      );
+  $curl = curl_init();
+  curl_setopt($curl, CURLOPT_URL, $url);            
+  curl_setopt($curl, CURLOPT_HEADER, 0);             //可以将获取响应的头信息，0不显示
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);     //将curl_exec()获取的信息以文件流的形式返回,而不是直接输出
+  curl_setopt($curl, CURLOPT_POST, 1);               //使用POST请求
+  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查
+  curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, true);  // 从证书中检查SSL加密算法是否存在
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);//设置支持的数组
+  $data = curl_exec($curl);                          //返回api的json对象
+  //关闭URL请求
+  curl_close($curl);  
+  return $data;    //返回json对象
+
+
+2.GET请求
+  $url='www.baidu.com';
+  //file_get_contents()函数GET请求，较为方便
+  $html = file_get_contents($url);
+  return $html;       //返回响应信息
+  
+  
+3.CURL GET请求
+  $url = "www.baidu.com";
+  $curl = curl_init(); // 启动一个CURL会话
+  curl_setopt($curl, CURLOPT_URL, $url);
+  curl_setopt($curl, CURLOPT_HEADER, 0);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查
+  curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);  // 从证书中检查SSL加密算法是否存在
+  $tmpInfo = curl_exec($curl);     //返回api的json对象
+  //关闭URL请求
+  curl_close($curl);
+  return $tmpInfo;    //返回json对象
+  

@@ -1,0 +1,2 @@
+1.JSON.stringify() 将数组转化为json格式
+2.JSON.parse（）   将json格式转化为数组

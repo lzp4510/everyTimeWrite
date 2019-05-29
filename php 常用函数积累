@@ -1,3 +1,5 @@
 1. strtolower()函数       将字符创全部转化为小写
 2. strtoupper()函数       将字符串全部转化为大写
 3. array_keys()函数       获取一维数组的键名
+4. is_numeric()函数       判断字符串是否是数字
+5. strlen()函数           获取字符串长度

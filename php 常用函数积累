@@ -3,3 +3,4 @@
 3. array_keys()函数       获取一维数组的键名
 4. is_numeric()函数       判断字符串是否是数字
 5. strlen()函数           获取字符串长度
+6.header("Content-Type: text/html;charset=utf-8");//加这行代码解决中文乱码问题

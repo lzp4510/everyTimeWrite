@@ -5,3 +5,4 @@
 5. strlen()函数           获取字符串长度
 6.header("Content-Type: text/html;charset=utf-8");//加这行代码解决中文乱码问题
 7. array_combine(array1,array2)函数    将两个数组合并为一个数组，array1为键名，array2为值
+8. number_format(string,2)函数         在数字后面加小数点

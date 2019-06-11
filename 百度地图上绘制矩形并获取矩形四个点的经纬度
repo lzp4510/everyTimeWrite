@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <title>绘制矩形</title>
+
+  <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=你的AK"></script>
+  <script type="text/javascript" src="js/GeoUtils.js"></script> 
+  <!--加载鼠标绘制工具-->
+  <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
+  <!--加载鼠标绘制工具-->
+  <link rel="stylesheet" href="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.css" />
+
+
+
+</head>
+
+<body>
+<!--百度地图容器-->
+<div style="width:80%;height:90%;position: absolute;float: left;" id="map"></div>
+<div style="float: right;" id="jieguo"></div>
+</body>
+<script type="text/javascript">
+  //创建地图
+  var map = new BMap.Map("map");
+  var point = new BMap.Point(118.658953, 37.425953); //设置地图的中心
+  map.centerAndZoom(point, 17); //设置地图的层级
+  map.addControl(new BMap.MapTypeControl()); //设置地图的类型控件
+  map.enableScrollWheelZoom(true);	//滚轮滑动缩放地图
+
+  var overlays = [];
+  var overlaycomplete = function(e){
+    overlays.push(e.overlay);
+    var path = e.overlay.getPath();
+    for(var i=0;i<path.length;i++){
+      console.log("lng:"+path[i].lng+"\n lat:"+path[i].lat);
+    }
+  };
+
+  var styleOptions = {
+    strokeColor:"black",    //边线颜色。
+    fillColor:"red",      //填充颜色。当参数为空时，圆形将没有填充效果。
+    strokeWeight: 1,       //边线的宽度，以像素为单位。
+    strokeOpacity: 1,	   //边线透明度，取值范围0 - 1。
+    fillOpacity: 0.4,      //填充的透明度，取值范围0 - 1。
+    strokeStyle: 'solid' //边线的样式，solid或dashed。
+  }
+
+  //实例化鼠标绘制工具
+  var myDrawingManagerObject = new BMapLib.DrawingManager(map, {
+    isOpen: false, //是否开启绘制模式
+    enableDrawingTool: true, //是否显示工具栏
+    drawingMode:BMAP_DRAWING_RECTANGLE ,//绘制模式  矩形
+    drawingToolOptions: {
+      anchor: BMAP_DRAWING_RECTANGLE  , //位置
+      offset: new BMap.Size(5, 5), //偏离值
+      drawingModes:[
+        BMAP_DRAWING_RECTANGLE
+      ]
+    },
+    rectangleOptions: styleOptions, //矩形的样式
+  });
+  //添加鼠标绘制工具监听事件，用于获取绘制结果
+  myDrawingManagerObject.addEventListener('overlaycomplete', overlaycomplete);
+
+</script>
+
+</html>

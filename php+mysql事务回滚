@@ -1,0 +1,17 @@
+<?php
+$db = new mysqli("localhost","root","root","test"); //连接数据库
+$db->autocommit(false); //设置为非自动提交——事务处理
+$sql1  = "INSERT INTO `test` (`id`,`name` )VALUES (NULL,'测试' )";
+$result1 = $db->query($sql1);
+$sql2  = "INSERT INTO `test` (`did`,`name` )VALUES (NULL,'测试' )";//我故意写错测试回滚是否有效
+$result2 = $db->query($sql2);
+if ($result1 && $result2) {
+    $db->commit();  //全部成功，提交执行结果
+    echo '提交';
+} else {
+    $db->rollback(); //有任何错误发生，回滚并取消执行结果
+    echo '回滚';
+}
+$db->autocommit(true); //设置为非自动提交——事务处理
+$db->close();
+?>

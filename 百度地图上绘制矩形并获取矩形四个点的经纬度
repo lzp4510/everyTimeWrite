@@ -4,11 +4,11 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-  <title>绘制矩形</title>
+  <title>判断点是否在矩形区域内</title>
 
   <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
   <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=你的AK"></script>
-  <script type="text/javascript" src="js/GeoUtils.js"></script> 
+  <script type="text/javascript" src="js/GeoUtils.js"></script>
   <!--加载鼠标绘制工具-->
   <script type="text/javascript" src="http://api.map.baidu.com/library/DrawingManager/1.4/src/DrawingManager_min.js"></script>
   <!--加载鼠标绘制工具-->
@@ -21,7 +21,9 @@
 <body>
 <!--百度地图容器-->
 <div style="width:80%;height:90%;position: absolute;float: left;" id="map"></div>
-<div style="float: right;" id="jieguo"></div>
+<div style="float: right;" id="jieguo">
+  <button onclick="clearAll()">清除全部遮盖物</button>
+</div>
 </body>
 <script type="text/javascript">
   //创建地图
@@ -35,17 +37,35 @@
   var overlaycomplete = function(e){
     overlays.push(e.overlay);
     var path = e.overlay.getPath();
-    for(var i=0;i<path.length;i++){
-      console.log("lng:"+path[i].lng+"\n lat:"+path[i].lat);
-    }
+
+    myDrawingManagerObject.close();
+    alert(path[0].lng+'--'+path[0].lat);
+    alert(path[2].lng+'--'+path[2].lat);
+     if (e.drawingMode == 'rectangle'){}
+
   };
 
+
+  /**
+   * 根据数据库中的经纬度画矩形
+   */
+  var polygon = new BMap.Polygon([
+    new BMap.Point(118.656698,37.429112),
+    new BMap.Point(118.656698,37.426791),
+    new BMap.Point(118.66101,37.426791),
+    new BMap.Point(118.66101,37.429112),
+  ], {strokeColor:"green",fillColor:"white", strokeWeight:2, strokeOpacity:1,fillOpacity:0.6,strokeStyle: 'solid' ,});
+  map.addOverlay(polygon);
+
+  /**
+   * 用鼠标画矩形
+   */
   var styleOptions = {
-    strokeColor:"black",    //边线颜色。
-    fillColor:"red",      //填充颜色。当参数为空时，圆形将没有填充效果。
-    strokeWeight: 1,       //边线的宽度，以像素为单位。
+    strokeColor:"green",    //边线颜色。
+    fillColor:"white",      //填充颜色。当参数为空时，圆形将没有填充效果。
+    strokeWeight: 2,       //边线的宽度，以像素为单位。
     strokeOpacity: 1,	   //边线透明度，取值范围0 - 1。
-    fillOpacity: 0.4,      //填充的透明度，取值范围0 - 1。
+    fillOpacity: 0.6,      //填充的透明度，取值范围0 - 1。
     strokeStyle: 'solid' //边线的样式，solid或dashed。
   }
 
@@ -66,6 +86,19 @@
   //添加鼠标绘制工具监听事件，用于获取绘制结果
   myDrawingManagerObject.addEventListener('overlaycomplete', overlaycomplete);
 
+
+  function clearAll() {
+    var allOverlay = map.getOverlays();
+    console.log(allOverlay);
+    for(var i = 0; i < allOverlay.length; i++){
+      // map.removeOverlay(overlays[i]);
+      console.log(allOverlay[i].toString());
+      if (allOverlay[i].toString() == '[object Polygon]') {
+      var number = allOverlay[i]['ba'].substr(9);
+        map.removeOverlay(allOverlay[i]);
+      }
+    }
+  }
 </script>
 
 </html>

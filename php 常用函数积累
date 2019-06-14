@@ -20,5 +20,7 @@
           }
           return $bytes;
         }
-
+11.$file = file_get_contents('filename');       //读取文件
+   filesize = strlen($file);                    //获取文件大小
+12.filesize()                                   //获取文件大小函数
 

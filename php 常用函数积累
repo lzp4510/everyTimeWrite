@@ -37,6 +37,8 @@
       f.header('HTTP/1.1 401 Unauthorized');
         header('WWW-Authenticate: Basic realm="Top Secret"');
         //页面执行http验证
+      g.header("Access-Control-Allow-Origin:*");            //支持跨域
+
         
         
         

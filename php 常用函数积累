@@ -29,7 +29,28 @@
       b.header('Refresh: 10; url=http://www.baidu.com/');   //10秒之后跳转到百度页面
       c.header('content-type:text/html;charset=utf-8');     //声明content-type编码
       d.header('HTTP/1.1 404 Not Found');                   //使页面无法运行报出404错误
-      e.
+      e.header('Content-Type: application/octet-stream');                     //设置内容类型
+        header('Content-Disposition: attachment; filename="example.zip"');    //设置MIME用户作为附件
+        header('Content-Transfer-Encoding: binary');                          //设置传输方式
+        header('Content-Length: '.filesize('example.zip'));                   //设置内容长度
+        //执行页面下载操作
+      f.header('HTTP/1.1 401 Unauthorized');
+        header('WWW-Authenticate: Basic realm="Top Secret"');
+        //页面执行http验证
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
 
 

@@ -24,3 +24,12 @@
    filesize = strlen($file);                    //获取文件大小
 12.filesize()                                   //获取文件大小函数
 
+13.header()函数的使用示例
+      a.header("location:http://www.baidu.com");            //跳转到百度页面
+      b.header('Refresh: 10; url=http://www.baidu.com/');   //10秒之后跳转到百度页面
+      c.header('content-type:text/html;charset=utf-8');     //声明content-type编码
+      d.header('HTTP/1.1 404 Not Found');                   //使页面无法运行报出404错误
+      e.
+
+
+

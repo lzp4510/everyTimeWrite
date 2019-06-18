@@ -1,0 +1,30 @@
+//第一种，根据.拆分,获取最后一个元素的值
+function getExt1{
+    return end(explode(".",$file);)
+}
+//第二种，获取最后一个点的位置，截取
+function getExt2{
+    return substr($file,strrpos($file,'.')+1);
+}
+//第三种,根据.拆分,获取最后一个元素的值
+function getExt3($file) {
+    return array_pop(explode(‘.’,$file)); 
+}
+
+//第四种，pathinfo 
+function getExt5($file) {
+    $arr = pathinfo($file);
+    return $arr['extension'];
+    //或者这样return pathinfo($file,PATHINFO_EXTENSION);
+}
+
+//第五种，正则,子模式
+function getExt6$file){
+    preg_match（"/(gif | jpg | png)$/",$file,$match）;
+    $match=$match[0];
+} 
+//第六种，正则反向引用
+function getExt7($file){
+    $match=preg_replace("/.*\.(\w+)/" , "\\1" ,$file );
+    echo $match;
+}

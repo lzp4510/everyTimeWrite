@@ -38,7 +38,7 @@
         header('WWW-Authenticate: Basic realm="Top Secret"');
         //页面执行http验证
       g.header("Access-Control-Allow-Origin:*");            //支持跨域
-
+14.md5_file(url) 函数    获取文件的md5值
         
         
         

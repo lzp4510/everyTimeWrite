@@ -1,0 +1,8 @@
+<?php
+$hex = $_GET['hex'];
+$v = hexdec($hex);
+$x = ($v & ((1 << 23) - 1)) + (1 << 23) * ($v >> 31 | 1);
+$exp = ($v >> 23 & 0xFF) - 127;
+$hex = $x * pow(2, $exp - 23);
+return round($hex,6);
+?>

@@ -38,8 +38,11 @@
         header('WWW-Authenticate: Basic realm="Top Secret"');
         //页面执行http验证
       g.header("Access-Control-Allow-Origin:*");            //支持跨域
+
 14.md5_file(url) 函数    获取文件的md5值
-        
+
+15.str_replace("被替换的字符","要替换的字符","操作的字符串");
+      str_replace("world","Shanghai","Hello world!");
         
         
         

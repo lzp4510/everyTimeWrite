@@ -413,3 +413,10 @@ mount -t smbfs -o username=user,password=pass //WinClient/share /mnt/share mount
 
 
 
+
+定时器
+crontab -e            //创建定时器
+crontab -l            //查看定时器
+$(date +"\%Y\%m\%d")  //定时器中获取当前时间
+
+

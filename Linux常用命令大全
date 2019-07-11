@@ -420,3 +420,8 @@ crontab -l            //查看定时器
 $(date +"\%Y\%m\%d")  //定时器中获取当前时间
 
 
+
+
+备份服务器数据库
+mysqldump -u用户名 -p密码 --default-character-set=utf8 --opt --extended-insert=false --triggers -R --hex-blob --single-transaction diy>diy20190710.sql
+

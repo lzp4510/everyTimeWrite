@@ -43,8 +43,11 @@
 
 15.str_replace("被替换的字符","要替换的字符","操作的字符串");
       str_replace("world","Shanghai","Hello world!");
-        
-        
+16.EOF用法
+   $a = <<<EOF
+            为html格式内容
+          EOF;
+17.String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）        
         
         
         

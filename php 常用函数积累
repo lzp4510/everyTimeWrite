@@ -48,8 +48,9 @@
             为html格式内容
           EOF;
 17.String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）        
-        
-        
+
+18.array_slice($array,0,10);                                      //取数组中前十条数据，其他的不显示
+19.array_multisort($a,SORT_DESC,$b,SORT_ASC,$array);              //数组$array中按$a降序排列，$b升序排列
         
         
         

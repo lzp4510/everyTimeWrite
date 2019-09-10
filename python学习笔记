@@ -1,5 +1,6 @@
 # python
 从零开始工作随时记录
+一、零基础
 
 print   打印
 
@@ -9,4 +10,27 @@ str[2:5]    第三个字符到第五个字符
 
 字符串前加r表示原始字符串，不会发生转义
 
+打印的时候   加上end=" "可以让打印内容不换行
 
+在 python 用 import 或者 from...import 来导入相应的模块。
+
+将整个模块(somemodule)导入，格式为： import somemodule
+
+从某个模块中导入某个函数,格式为： from somemodule import somefunction
+
+从某个模块中导入多个函数,格式为： from somemodule import firstfunc, secondfunc, thirdfunc
+
+将某个模块中的全部函数导入，格式为： from somemodule import *
+
+a = set('abracadabra')
+b = set('alacazam')
+ 
+print(a)
+ 
+print(a - b)     # a 和 b 的差集
+ 
+print(a | b)     # a 和 b 的并集
+ 
+print(a & b)     # a 和 b 的交集
+ 
+print(a ^ b)     # a 和 b 中不同时存在的元素

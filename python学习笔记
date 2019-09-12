@@ -131,7 +131,16 @@
         symmetric_difference_update()	移除当前集合中在另外一个指定集合相同的元素，并将另外一个指定集合中不同的元素插入到当前集合中。
         union()	返回两个集合的并集
         update()	给集合添加元素
-     6.   
+     6.斐波那契数列
+            #!/usr/bin/python3
+            # Fibonacci series: 斐波纳契数列
+            # 两个元素的总和确定了下一个数
+            a, b = 0, 1
+            while b < 1000:
+                print(b, end=',')
+                a, b = b, a+b
       
-
+     7.迭代器与生成器
+        a、迭代器
+           
 

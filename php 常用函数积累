@@ -51,7 +51,7 @@
 
 18.array_slice($array,0,10);                                      //取数组中前十条数据，其他的不显示
 19.array_multisort($a,SORT_DESC,$b,SORT_ASC,$array);              //数组$array中按$a降序排列，$b升序排列
-        
+20.sprintf("%.2f", $string);                                      //将字符串转为浮点型两位小数        
         
         
         
